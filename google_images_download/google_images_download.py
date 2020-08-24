@@ -130,14 +130,14 @@ class googleimagesdownload:
     def _extract_data_pack(self, page):
         start_line = page.find("AF_initDataCallback({key: \\'ds:1\\'") - 10
         start_object = page.find('[', start_line + 1)
-        end_object = page.find('</script>', start_object + 1) - 5
+        end_object = page.find('</script>', start_object + 1) - 20
         object_raw = str(page[start_object:end_object])
         return bytes(object_raw, "utf-8").decode("unicode_escape")
 
     def _extract_data_pack_extended(self, page):
         start_line = page.find("AF_initDataCallback({key: 'ds:1'") - 10
         start_object = page.find('[', start_line + 1)
-        end_object = page.find('</script>', start_object + 1) - 4
+        end_object = page.find('</script>', start_object + 1) - 20
         return str(page[start_object:end_object])
 
     def _extract_data_pack_ajax(self, data):
